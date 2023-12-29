@@ -130,9 +130,21 @@ bot.on('callback_query', (query) => {
                 ...form.getHeaders(),
             },
         }).then(() => {
-            bot.sendVideo(channelName, fs.createReadStream(videoPath));
+            bot.sendVideo(channelName, fs.createReadStream(videoPath)).then(() => {
+                console.log(`Video ${videoPath} sent to Telegram`);
+                bot.sendChatAction(channelName, '👍').then(() => {
+                    console.log('Liked');
+                }).catch((e) => {
+                    console.error(e);
+                });
+                bot.sendChatAction(channelName, '👎').then(() => {
+                    console.log('Disliked');
+                }).catch((e) => {
+                    console.error(e);
+                });
+            });
+
             console.log(`Video ${videoPath} sent to Discord`);
-            console.log(`Video ${videoPath} sent to Telegram`);
             bot.deleteMessage(chatId, messageId.toString()).then(() => {
                 fs.unlinkSync(videoPath);
                 videoCounter--;
