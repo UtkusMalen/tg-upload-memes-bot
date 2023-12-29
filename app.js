@@ -8,7 +8,7 @@ const FormData = require('form-data');
 const ffmpeg = require('ffmpeg-static');
 console.log(ffmpeg);
 
-const botToken = '6915358362:AAGzZwbhFbifrHJsU4beGIny1Bt3hiXkRjY'
+const botToken = '6477451489:AAHwbqc36IP33bCkxib2UGSVvhk7qcqeY9A'
 bot = new TelegramBot(botToken, {polling: true});
 const chatId = '1092856248';
 const channelName = '@CatosMemos';
