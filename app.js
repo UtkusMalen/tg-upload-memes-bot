@@ -5,6 +5,7 @@ const util = require('util');
 const axios = require("axios");
 const exec = util.promisify(require('child_process').exec);
 const FormData = require('form-data');
+const ffmpegPath = require('ffmpeg-static').path;
 
 const botToken = '6915358362:AAGzZwbhFbifrHJsU4beGIny1Bt3hiXkRjY'
 bot = new TelegramBot(botToken, {polling: true});
@@ -39,7 +40,7 @@ async function downloadVideo(url) {
     try {
         const videoName = `video${videoCounter}.mp4`;
         const mpdUrl = `${url}/DASHPlaylist.mpd`;
-        const {stdout, stderr} = await exec(`ffmpeg -i ${mpdUrl} -c copy ${videoName}`);
+        const {stdout, stderr} = await exec(`${ffmpegPath} -i ${mpdUrl} -c copy ${videoName}`);
         if(stderr) {
             console.error('Error:', stderr);
             return false;
