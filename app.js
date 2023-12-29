@@ -57,7 +57,7 @@ module.exports = downloadVideo;
 
 async function findAndDownload() {
     try {
-        const posts = await reddit.getSubreddit('cats').getTop({ time: 'day' });
+        const posts = await reddit.getSubreddit('cats').getNew({ time: 'day' });
         const videoName = `video${videoCounter}.mp4`;
 
         for (const post of posts) {
