@@ -1,7 +1,10 @@
 const snoowrap = require('snoowrap');
-const axios = require('axios');
 const fs = require('fs');
 const TelegramBot = require('node-telegram-bot-api');
+const util = require('util');
+const axios = require("axios");
+const exec = util.promisify(require('child_process').exec);
+const FormData = require('form-data');
 
 botToken = '6915358362:AAGzZwbhFbifrHJsU4beGIny1Bt3hiXkRjY'
 bot = new TelegramBot(botToken, {polling: true});
@@ -18,48 +21,71 @@ const reddit = new snoowrap({
 
 let lastDownloadedVideoId = null;
 const sentVideos = new Set();
+let videoCounter = 1;
+
+function loadVideoData() {
+    try {
+        const data = fs.readFileSync('videoData.json');
+        return JSON.parse(data);
+    } catch (error) {
+        return {};
+    }
+}
+
+videoData = loadVideoData();
+
+async function downloadVideo(url) {
+    try {
+        const videoName = `video${videoCounter}.mp4`;
+        const mpdUrl = `${url}/DASHPlaylist.mpd`;
+        const {stdout, stderr} = await exec(`ffmpeg -i ${mpdUrl} -c copy ${videoName}`);
+        if(stderr) {
+            console.error('Error:', stderr);
+            return false;
+        }
+        console.log('Video downloaded');
+        return true;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
+}
 
 async function findAndDownload() {
     try {
-        const posts = await reddit.getSubreddit('cats').getTop({time: 'day'});
+        const posts = await reddit.getSubreddit('cats').getTop({ time: 'day' });
+        const videoName = `video${videoCounter}.mp4`;
 
         for (const post of posts) {
-            if(post.is_video && post.id !== lastDownloadedVideoId && !sentVideos.has(post.id)) {
+            if (post.is_video && post.id !== lastDownloadedVideoId && !sentVideos.has(post.id)) {
                 console.log(`Found a video: ${post.url}`);
 
-                const videoResponse = await axios.get(post.media.reddit_video.fallback_url, {
-                    responseType: 'stream'
-                });
+                const downloadSuccess = await downloadVideo(post.url);
 
-                const videoStream = fs.createWriteStream('video.mp4');
-                videoResponse.data.pipe(videoStream);
+                setTimeout(() => {
+                    fs.access(videoName, fs.constants.F_OK, (err) => {
+                        if (!err) {
 
-                console.log(`Video downloaded`);
-
-                videoStream.on('finish', () => {
-                    bot.sendVideo(chatId, 'video.mp4', {
-                        reply_markup: {
-                            inline_keyboard: [
-                                [
-                                    {text: 'Delete', callback_data: 'delete'},
-                                    {text: 'Approve', callback_data: 'approve'}
-                                ]
-                            ]
+                            bot.sendVideo(chatId, videoName, {
+                                reply_markup: {
+                                    inline_keyboard: [
+                                        [
+                                            { text: 'Delete', callback_data: 'delete' },
+                                            { text: 'Approve', callback_data: 'approve' }
+                                        ]
+                                    ]
+                                }
+                            }).then(() => {
+                                console.log(`Video ${videoName} sent`);
+                                sentVideos.add(post.id);
+                                lastDownloadedVideoId = post.id;
+                                videoCounter++;
+                            })
+                        } else {
+                            console.log('Video download failed')
                         }
-                    }).then(() => {
-                        console.log(`Video sent`);
-                        sentVideos.add(post.id);
-                        lastDownloadedVideoId = post.id;
-                        /*
-                        setTimeout(() => {
-                            fs.unlinkSync('video.mp4');
-                        }, 10000);
-
-                         */
-                    }).catch((err) => {
-                        console.error(err);
-                    });
-                });
+                    })
+                }, 15000)
                 return;
             }
         }
@@ -72,17 +98,48 @@ async function findAndDownload() {
 bot.on('callback_query', (query) => {
     const chatId = query.message.chat.id;
     const messageId = query.message.message_id;
+    const videoPath = `video${videoCounter - 1}.mp4`;
 
-    if(query.data === 'delete') {
+    if (query.data === 'delete') {
         bot.deleteMessage(chatId, messageId.toString()).then(() => {
+            fs.unlinkSync(videoPath);
             console.log('Video deleted');
+            videoCounter--;
+
+            bot.sendMessage(chatId, 'Deleted').then((sent) => {
+                setTimeout(() => {
+                    bot.deleteMessage(chatId, sent.message_id.toString());
+                }, 5000)
+            })
         }).catch((err) => {
             console.error(err);
-        })
-    } else if(query.data === 'approve') {
+        });
+    } else if (query.data === 'approve') {
+        const discordWebhook = 'https://discord.com/api/webhooks/1190016976307888270/3-YnEFPqshD7LVPfTgywnPg8h-zRsxc_23mlC_aqCDdaCGbEdoDYv_DFA0abYT9jYMG2';
+        const form = new FormData();
+        form.append('content', 'КОТ');
+        form.append('file', fs.createReadStream(videoPath), videoPath);
+        axios.post(discordWebhook, form, {
+            headers: {
+                ...form.getHeaders(),
+            },
+        }).then(() => {
+            console.log(`Video ${videoPath} sent to Discord`);
+            bot.deleteMessage(chatId, messageId.toString()).then(() => {
+                fs.unlinkSync(videoPath);
+                videoCounter--;
 
+                bot.sendMessage(chatId, 'Approved').then((sent) => {
+                    setTimeout(() => {
+                        bot.deleteMessage(chatId, sent.message_id.toString());
+                    }, 5000);
+                });
+            })
+        }).catch((e) => {
+            console.error(e);
+        });
     }
-})
+});
 
 bot.on('polling_error', (error) => {
     console.log(error);
