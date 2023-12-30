@@ -126,7 +126,7 @@ bot.on('callback_query', (query) => {
         });
     } else if (query.data === 'approve') {
         const telegramWebhook = `https://api.telegram.org/bot${botToken}/sendVideo`;
-        const discordWebhook = 'https://discord.com/api/webhooks/1190282633947660379/J5cdKFvskUIZfRsCYAaWydBSJ85ybOWm3Fag6gQ0TMKhzui3T8gZVf1UgXF1NoaChcNq';
+        const discordWebhook = 'https://discord.com/api/webhooks/1190016976307888270/3-YnEFPqshD7LVPfTgywnPg8h-zRsxc_23mlC_aqCDdaCGbEdoDYv_DFA0abYT9jYMG2';
         const form = new FormData();
         form.append('chat_id', channelName);
         form.append('content', '');
