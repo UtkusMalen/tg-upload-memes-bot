@@ -170,4 +170,4 @@ bot.onText(/\/getVideo/, (msg) => {
     findAndDownload(chatId);
 })
 findAndDownload();
-setInterval(findAndDownload, 5 * 60 * 1000);
+setInterval(findAndDownload, 45 * 60 * 1000);
