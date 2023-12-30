@@ -132,16 +132,18 @@ bot.on('callback_query', (query) => {
         }).then(() => {
             bot.sendVideo(channelName, fs.createReadStream(videoPath)).then(() => {
                 console.log(`Video ${videoPath} sent to Telegram`);
-                bot.sendChatAction(channelName, '👍').then(() => {
-                    console.log('Liked');
-                }).catch((e) => {
-                    console.error(e);
-                });
-                bot.sendChatAction(channelName, '👎').then(() => {
-                    console.log('Disliked');
-                }).catch((e) => {
-                    console.error(e);
-                });
+                setTimeout(() => {
+                    bot.sendChatAction(channelName, '👍').then(() => {
+                        console.log('Liked');
+                    }).catch((e) => {
+                        console.error(e);
+                    });
+                    bot.sendChatAction(channelName, '👎').then(() => {
+                        console.log('Disliked');
+                    }).catch((e) => {
+                        console.error(e);
+                    });
+                }, 5000);
             });
 
             console.log(`Video ${videoPath} sent to Discord`);
