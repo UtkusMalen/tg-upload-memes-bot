@@ -16,7 +16,6 @@
     "fs": "^0.0.1-security",
     "got": "^14.0.0",
     "node-telegram-bot-api": "^0.64.0",
-    "puppeteer": "^21.6.1",
     "snoowrap": "^1.23.0"
   },
   "devDependencies": {
