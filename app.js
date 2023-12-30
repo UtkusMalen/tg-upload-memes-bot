@@ -14,7 +14,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const botToken = '6477451489:AAHwbqc36IP33bCkxib2UGSVvhk7qcqeY9A'
+const botToken = '6828289554:AAF_-yHD35uSebKYSPUhdskb-jHv26L02VQ'
 bot = new TelegramBot(botToken, {polling: true});
 const chatId = '1092856248';
 const channelName = '@CatosMemos';
