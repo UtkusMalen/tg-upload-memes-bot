@@ -1,0 +1,104 @@
+[
+  {
+    "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629/operations/2D9CE1AFCA9B16BF",
+    "operationId": "2D9CE1AFCA9B16BF",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Failed",
+      "timestamp": "2023-12-30T13:07:49.4887203Z",
+      "duration": "PT0.3957045S",
+      "trackingId": "624cb9f4-9e1a-4090-bfe4-6f4c8d4936de",
+      "statusCode": "NotFound",
+      "statusMessage": {
+        "status": "Failed",
+        "error": {
+          "code": "NotFound",
+          "message": "Cannot find ServerFarm with name ASP-DefaultResourceGroupEUS-9cfa.",
+          "details": [
+            {
+              "message": "Cannot find ServerFarm with name ASP-DefaultResourceGroupEUS-9cfa."
+            },
+            {
+              "code": "NotFound"
+            },
+            {}
+          ]
+        }
+      },
+      "targetResource": {
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/TgCatMemesBot",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "TgCatMemesBot"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629/operations/840DA7CE50352A04",
+    "operationId": "840DA7CE50352A04",
+    "properties": {
+      "provisioningOperation": "Read",
+      "provisioningState": "Succeeded",
+      "timestamp": "2023-12-30T13:07:49.0487469Z",
+      "duration": "PT35.3059715S",
+      "trackingId": "5dc8709f-575e-400f-8b6c-921eb888dcc8",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/microsoft.insights/components/TgCatMemesBot",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "TgCatMemesBot",
+        "apiVersion": "2015-05-01"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629/operations/B331C90356676F75",
+    "operationId": "B331C90356676F75",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2023-12-30T13:07:48.9582388Z",
+      "duration": "PT35.2154634S",
+      "trackingId": "854a24c5-a1c3-435e-8679-6d97c0ccf0d0",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/microsoft.insights/components/TgCatMemesBot",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "TgCatMemesBot"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629/operations/40BD0FD4964D3A42",
+    "operationId": "40BD0FD4964D3A42",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2023-12-30T13:07:18.5141219Z",
+      "duration": "PT4.7713465S",
+      "trackingId": "ae7b20bb-c360-4c8d-8256-d26db2a82e3f",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/serverfarms/ASP-DefaultResourceGroupEUS-9cfa",
+        "resourceType": "Microsoft.Web/serverfarms",
+        "resourceName": "ASP-DefaultResourceGroupEUS-9cfa"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629/operations/D57ACDC7026CAFFD",
+    "operationId": "D57ACDC7026CAFFD",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2023-12-30T13:07:46.176594Z",
+      "duration": "PT32.4338186S",
+      "trackingId": "d2718f86-24b2-4121-8f84-93cfa323c3fb",
+      "statusCode": "OK",
+      "targetResource": {
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/newWorkspaceTemplate",
+        "resourceType": "Microsoft.Resources/deployments",
+        "resourceName": "newWorkspaceTemplate"
+      }
+    }
+  }
+]

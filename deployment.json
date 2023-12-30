@@ -1,0 +1,197 @@
+{
+  "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629",
+  "name": "Microsoft.Template-20231230150629",
+  "type": "Microsoft.Resources/deployments",
+  "properties": {
+    "templateHash": "15468210100333680879",
+    "parameters": {
+      "subscriptionId": {
+        "type": "String",
+        "value": "6b4e1a34-89ef-40be-b039-adad002023e0"
+      },
+      "name": {
+        "type": "String",
+        "value": "TgCatMemesBot"
+      },
+      "location": {
+        "type": "String",
+        "value": "West Europe"
+      },
+      "use32BitWorkerProcess": {
+        "type": "Bool",
+        "value": true
+      },
+      "ftpsState": {
+        "type": "String",
+        "value": "FtpsOnly"
+      },
+      "storageAccountName": {
+        "type": "String",
+        "value": "defaultresourcegrou946c"
+      },
+      "netFrameworkVersion": {
+        "type": "String",
+        "value": "v6.0"
+      },
+      "sku": {
+        "type": "String",
+        "value": "Dynamic"
+      },
+      "skuCode": {
+        "type": "String",
+        "value": "Y1"
+      },
+      "workerSize": {
+        "type": "String",
+        "value": "0"
+      },
+      "workerSizeId": {
+        "type": "String",
+        "value": "0"
+      },
+      "numberOfWorkers": {
+        "type": "String",
+        "value": "1"
+      },
+      "repoUrl": {
+        "type": "String",
+        "value": "https://github.com/UtkusMalen/TgUploadMemesBot"
+      },
+      "branch": {
+        "type": "String",
+        "value": "master"
+      },
+      "hostingPlanName": {
+        "type": "String",
+        "value": "ASP-DefaultResourceGroupEUS-9cfa"
+      },
+      "serverFarmResourceGroup": {
+        "type": "String",
+        "value": "DefaultResourceGroup-EUS"
+      },
+      "alwaysOn": {
+        "type": "Bool",
+        "value": true
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Failed",
+    "timestamp": "2023-12-30T13:07:49.6651129Z",
+    "duration": "PT36.2267038S",
+    "correlationId": "fcaed725-257d-4fc4-85f8-6c2bff2dea06",
+    "providers": [
+      {
+        "namespace": "Microsoft.Web",
+        "resourceTypes": [
+          {
+            "resourceType": "sites",
+            "locations": [
+              "westeurope"
+            ]
+          },
+          {
+            "resourceType": "sites/sourcecontrols",
+            "locations": [
+              null
+            ]
+          },
+          {
+            "resourceType": "serverfarms",
+            "locations": [
+              "westeurope"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "microsoft.insights",
+        "resourceTypes": [
+          {
+            "resourceType": "components",
+            "locations": [
+              "westeurope"
+            ]
+          }
+        ]
+      },
+      {
+        "namespace": "Microsoft.Resources",
+        "resourceTypes": [
+          {
+            "resourceType": "deployments",
+            "locations": [
+              null
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/microsoft.insights/components/TgCatMemesBot",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "TgCatMemesBot"
+          },
+          {
+            "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/serverfarms/ASP-DefaultResourceGroupEUS-9cfa",
+            "resourceType": "Microsoft.Web/serverfarms",
+            "resourceName": "ASP-DefaultResourceGroupEUS-9cfa"
+          },
+          {
+            "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/microsoft.insights/components/TgCatMemesBot",
+            "resourceType": "microsoft.insights/components",
+            "resourceName": "TgCatMemesBot",
+            "apiVersion": "2015-05-01"
+          }
+        ],
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/TgCatMemesBot",
+        "resourceType": "Microsoft.Web/sites",
+        "resourceName": "TgCatMemesBot"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/Sites/TgCatMemesBot",
+            "resourceType": "Microsoft.Web/Sites",
+            "resourceName": "TgCatMemesBot"
+          }
+        ],
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/TgCatMemesBot/sourcecontrols/web",
+        "resourceType": "Microsoft.Web/sites/sourcecontrols",
+        "resourceName": "TgCatMemesBot/web"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/newWorkspaceTemplate",
+            "resourceType": "Microsoft.Resources/deployments",
+            "resourceName": "newWorkspaceTemplate"
+          }
+        ],
+        "id": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/microsoft.insights/components/TgCatMemesBot",
+        "resourceType": "microsoft.insights/components",
+        "resourceName": "TgCatMemesBot"
+      }
+    ],
+    "error": {
+      "code": "DeploymentFailed",
+      "target": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Resources/deployments/Microsoft.Template-20231230150629",
+      "message": "At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-deployment-operations for usage details.",
+      "details": [
+        {
+          "target": "/subscriptions/6b4e1a34-89ef-40be-b039-adad002023e0/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/TgCatMemesBot",
+          "message": "Cannot find ServerFarm with name ASP-DefaultResourceGroupEUS-9cfa."
+        }
+      ]
+    },
+    "validationLevel": "Template"
+  },
+  "tags": {
+    "marketplaceItemId": "Microsoft.Template"
+  }
+}
