@@ -14,7 +14,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-const botToken = '6061818880:AAGsd5TX3iZo51FSTwf6MI1o8gnIUVREnuc'
+const botToken = '6061818880:AAHvd0Q1YbX4yLnnRRloZdOleWlVJBUlFLs'
 bot = new TelegramBot(botToken, {polling: true});
 const chatId = '1092856248';
 const channelName = '@CatosMemos';
@@ -138,18 +138,6 @@ bot.on('callback_query', (query) => {
         }).then(() => {
             bot.sendVideo(channelName, fs.createReadStream(videoPath)).then(() => {
                 console.log(`Video ${videoPath} sent to Telegram`);
-                setTimeout(() => {
-                    bot.sendChatAction(channelName, '👍').then(() => {
-                        console.log('Liked');
-                    }).catch((e) => {
-                        console.error(e);
-                    });
-                    bot.sendChatAction(channelName, '👎').then(() => {
-                        console.log('Disliked');
-                    }).catch((e) => {
-                        console.error(e);
-                    });
-                }, 5000);
             });
 
             console.log(`Video ${videoPath} sent to Discord`);
