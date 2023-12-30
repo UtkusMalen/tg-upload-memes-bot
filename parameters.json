@@ -5,86 +5,94 @@
         "location": {
             "value": "eastus"
         },
-        "storageAccountName": {
-            "value": "utkusmalenstorage"
+        "networkInterfaceName1": {
+            "value": "tguploadmemesbot935_z1"
         },
-        "accountType": {
-            "value": "Standard_RAGRS"
+        "networkSecurityGroupName": {
+            "value": "tguploadmemesbot-nsg"
         },
-        "kind": {
-            "value": "StorageV2"
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "HTTP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "80"
+                    }
+                }
+            ]
         },
-        "minimumTlsVersion": {
-            "value": "TLS1_2"
+        "subnetName": {
+            "value": "default"
         },
-        "supportsHttpsTrafficOnly": {
-            "value": true
+        "virtualNetworkName": {
+            "value": "tguploadmemesbot-vnet"
         },
-        "allowBlobPublicAccess": {
-            "value": false
+        "addressPrefixes": {
+            "value": [
+                "10.0.0.0/16"
+            ]
         },
-        "allowSharedKeyAccess": {
-            "value": true
+        "subnets": {
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.0.0.0/24"
+                    }
+                }
+            ]
         },
-        "defaultOAuth": {
-            "value": false
+        "publicIpAddressName1": {
+            "value": "tguploadmemesbot-ip"
         },
-        "accessTier": {
-            "value": "Hot"
+        "publicIpAddressType": {
+            "value": "Static"
         },
-        "publicNetworkAccess": {
-            "value": "Enabled"
-        },
-        "allowCrossTenantReplication": {
-            "value": false
-        },
-        "networkAclsBypass": {
-            "value": "AzureServices"
-        },
-        "networkAclsDefaultAction": {
-            "value": "Allow"
-        },
-        "dnsEndpointType": {
+        "publicIpAddressSku": {
             "value": "Standard"
         },
-        "keySource": {
-            "value": "Microsoft.Storage"
+        "pipDeleteOption": {
+            "value": "Detach"
         },
-        "encryptionEnabled": {
-            "value": true
+        "virtualMachineName": {
+            "value": "tguploadmemesbot"
         },
-        "keyTypeForTableAndQueueEncryption": {
-            "value": "Account"
+        "virtualMachineName1": {
+            "value": "tguploadmemesbot"
         },
-        "infrastructureEncryptionEnabled": {
+        "virtualMachineComputerName1": {
+            "value": "tguploadmemesbot"
+        },
+        "virtualMachineRG": {
+            "value": "DefaultResourceGroup-EUS"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "osDiskDeleteOption": {
+            "value": "Delete"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1s"
+        },
+        "nicDeleteOption": {
+            "value": "Detach"
+        },
+        "hibernationEnabled": {
             "value": false
         },
-        "isContainerRestoreEnabled": {
-            "value": false
+        "adminUsername": {
+            "value": "azureuser"
         },
-        "isBlobSoftDeleteEnabled": {
-            "value": true
-        },
-        "blobSoftDeleteRetentionDays": {
-            "value": 7
-        },
-        "isContainerSoftDeleteEnabled": {
-            "value": true
-        },
-        "containerSoftDeleteRetentionDays": {
-            "value": 7
-        },
-        "changeFeed": {
-            "value": false
-        },
-        "isVersioningEnabled": {
-            "value": false
-        },
-        "isShareSoftDeleteEnabled": {
-            "value": true
-        },
-        "shareSoftDeleteRetentionDays": {
-            "value": 7
+        "virtualMachine1Zone": {
+            "value": "1"
         }
     }
 }
