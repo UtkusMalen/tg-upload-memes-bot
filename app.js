@@ -173,8 +173,9 @@ rl.on('line', (input) => {
     if (input.trim().toLowerCase() === 'stop') {
         console.log('Program stopped');
         process.exit(0);
-    } else {
-        console.log(`Вы ввели: ${input}`);
+    } else if(input.trim().toLowerCase() === 'skip') {
+        findAndDownload();
+        console.log('Skipped');
     }
 });
 
