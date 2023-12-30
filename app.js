@@ -125,17 +125,17 @@ bot.on('callback_query', (query) => {
             console.error(err);
         });
     } else if (query.data === 'approve') {
-        const telegramWebhook = `https://api.telegram.org/bot${botToken}/sendVideo`;
+        //const telegramWebhook = `https://api.telegram.org/bot${botToken}/sendVideo`;
         const discordWebhook = 'https://discord.com/api/webhooks/1190016976307888270/3-YnEFPqshD7LVPfTgywnPg8h-zRsxc_23mlC_aqCDdaCGbEdoDYv_DFA0abYT9jYMG2';
         const form = new FormData();
         form.append('chat_id', channelName);
         form.append('content', '');
         form.append('file', fs.createReadStream(videoPath), videoPath);
-        axios.post(discordWebhook, form, telegramWebhook,{
+        axios.post(discordWebhook, form, /*telegramWebhook, */{
             headers: {
                 ...form.getHeaders(),
             },
-        }).then(() => {
+        })/*.then(() => {
             bot.sendVideo(channelName, fs.createReadStream(videoPath)).then(() => {
                 console.log(`Video ${videoPath} sent to Telegram`);
                 setTimeout(() => {
@@ -151,6 +151,7 @@ bot.on('callback_query', (query) => {
                     });
                 }, 5000);
             });
+            */
 
             console.log(`Video ${videoPath} sent to Discord`);
             bot.deleteMessage(chatId, messageId.toString()).then(() => {
@@ -163,10 +164,10 @@ bot.on('callback_query', (query) => {
                     }, 5000);
                 });
             })
-        }).catch((e) => {
+        }/*.catch((e) => {
             console.error(e);
         });
-    }
+        */
 });
 
 rl.on('line', (input) => {
