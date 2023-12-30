@@ -1,0 +1,3 @@
+echo Starting the application...
+call npm start
+echo Application has started.
