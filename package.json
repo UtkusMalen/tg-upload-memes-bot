@@ -16,7 +16,8 @@
     "fs": "^0.0.1-security",
     "got": "^14.0.0",
     "node-telegram-bot-api": "^0.64.0",
-    "snoowrap": "^1.23.0"
+    "snoowrap": "^1.23.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "form-data": "^4.0.0"
