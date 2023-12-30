@@ -6,7 +6,13 @@ const axios = require("axios");
 const exec = util.promisify(require('child_process').exec);
 const FormData = require('form-data');
 const ffmpeg = require('ffmpeg-static');
+const readline = require('readline');
 console.log(ffmpeg);
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
 const botToken = '6477451489:AAHwbqc36IP33bCkxib2UGSVvhk7qcqeY9A'
 bot = new TelegramBot(botToken, {polling: true});
@@ -163,6 +169,15 @@ bot.on('callback_query', (query) => {
     }
 });
 
+rl.on('line', (input) => {
+    if (input.trim().toLowerCase() === 'stop') {
+        console.log('Program stopped');
+        process.exit(0);
+    } else {
+        console.log(`Вы ввели: ${input}`);
+    }
+});
+
 bot.on('polling_error', (error) => {
     console.log(error);
 })
@@ -172,4 +187,4 @@ bot.onText(/\/getVideo/, (msg) => {
     findAndDownload(chatId);
 })
 findAndDownload();
-setInterval(findAndDownload, 7 * 60 * 1000);
+setInterval(findAndDownload, 6 * 60 * 1000);
