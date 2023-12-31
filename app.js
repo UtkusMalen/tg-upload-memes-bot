@@ -30,7 +30,7 @@ const reddit = new snoowrap({
 
 let lastDownloadedVideoId = null;
 const sentVideos = new Set();
-let videoCounter = 1;
+let videoCounter = 53;
 
 function loadVideoData() {
     try {
