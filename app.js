@@ -66,7 +66,7 @@ async function findAndDownload() {
         const funnyAnimalsReddit = await reddit.getSubreddit('FunnyAnimals').getHot({time: 'day'});
         const shitpostingReddit = await reddit.getSubreddit('shitposting').getHot({time:'day'});
         const pikabuReddit = await reddit.getSubreddit('Pikabu').getHot({time:'day'});
-        const memesReddit = await reddit.getSubreddit('memes').getHot({time:'day});
+        const memesReddit = await reddit.getSubreddit('memes').getHot({time:'day'});
         const videoName = `video${videoCounter}.mp4`;
         const allReddits = [...funnyAnimalsReddit, ...pikabuReddit, ...memesReddit, ...shitpostingReddit,];
         for (const post of allReddits) {
