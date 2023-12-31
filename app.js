@@ -64,9 +64,12 @@ module.exports = downloadVideo;
 async function findAndDownload() {
     try {
         const funnyAnimalsReddit = await reddit.getSubreddit('FunnyAnimals').getHot({time: 'day'});
+        const shitpostingReddit = await reddit.getSubreddit('shitposting').getHot({time:'day'});
+        const pikabuReddit = await reddit.getSubreddit('Pikabu').getHot({time:'day'});
+        const memesReddit = await reddit.getSubreddit('memes').getHot({time:'day});
         const videoName = `video${videoCounter}.mp4`;
-        // const allReddits = [...funnyAnimalsReddit, // add some other subreddits];
-        for (const post of funnyAnimalsReddit) {
+        const allReddits = [...funnyAnimalsReddit, ...pikabuReddit, ...memesReddit, ...shitpostingReddit,];
+        for (const post of allReddits) {
             if (post.is_video && post.id !== lastDownloadedVideoId && !sentVideos.has(post.id)) {
                 console.log(`Found a video: ${post.url}`);
 
